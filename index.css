@@ -38,6 +38,7 @@ label {
     /* 初期状態では非表示 */
     position: fixed;
     width: 30%;
+    min-width: 500px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
