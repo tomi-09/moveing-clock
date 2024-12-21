@@ -109,6 +109,17 @@ document.getElementById('size-slider-speed').addEventListener('input', (event) =
     velocityY = speed;
     velocityY = speed;
 });
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.innerWidth < 600) { // 横幅が600px未満の場合
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("landscape").catch(function (error) {
+                console.error("Orientation lock failed: ", error);
+            });
+        } else {
+            console.warn("Orientation lock is not supported on this device.");
+        }
+    }
+});
 //秒だけ別で表示
 function updateTime() {
     const now = new Date();
