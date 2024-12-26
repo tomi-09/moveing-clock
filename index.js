@@ -211,22 +211,25 @@ document.addEventListener('click', () => {
     } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
         document.documentElement.msRequestFullscreen();
     }
-});
 
-if (window.screen.orientation) {
-    window.screen.orientation.lock('landscape').catch(function (error) {
-        console.log('Orientation lock failed: ', error);
-    });
-} else if (window.screen.lockOrientation) {
-    window.screen.lockOrientation('landscape').catch(function (error) {
-        console.log('Orientation lock failed: ', error);
-    });
-} else if (window.screen.mozLockOrientation) {
-    window.screen.mozLockOrientation('landscape').catch(function (error) {
-        console.log('Orientation lock failed: ', error);
-    });
-} else if (window.screen.msLockOrientation) {
-    window.screen.msLockOrientation('landscape').catch(function (error) {
-        console.log('Orientation lock failed: ', error);
-    });
-}
+    // 画面の向きをロックする
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(function (error) {
+            console.log('Orientation lock failed: ', error);
+        });
+    } else if (screen.lockOrientation) {
+        screen.lockOrientation('landscape').catch(function (error) {
+            console.log('Orientation lock failed: ', error);
+        });
+    } else if (screen.mozLockOrientation) {
+        screen.mozLockOrientation('landscape').catch(function (error) {
+            console.log('Orientation lock failed: ', error);
+        });
+    } else if (screen.msLockOrientation) {
+        screen.msLockOrientation('landscape').catch(function (error) {
+            console.log('Orientation lock failed: ', error);
+        });
+    } else {
+        console.log('Orientation lock not supported');
+    }
+});
