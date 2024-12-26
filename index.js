@@ -109,17 +109,7 @@ document.getElementById('size-slider-speed').addEventListener('input', (event) =
     velocityY = speed;
     velocityY = speed;
 });
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.innerWidth < 600) { // 横幅が600px未満の場合
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock("landscape").catch(function (error) {
-                console.error("Orientation lock failed: ", error);
-            });
-        } else {
-            console.warn("Orientation lock is not supported on this device.");
-        }
-    }
-});
+
 //秒だけ別で表示
 function updateTime() {
     const now = new Date();
@@ -209,4 +199,34 @@ function toggleSettings() {
         elapsedTimeInterval = setInterval(updateElapsedTime, 1000); // 経過時間の更新を再開
        
     }
+}
+
+document.addEventListener('click', () => {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+    }
+});
+
+if (window.screen.orientation) {
+    window.screen.orientation.lock('landscape').catch(function (error) {
+        console.log('Orientation lock failed: ', error);
+    });
+} else if (window.screen.lockOrientation) {
+    window.screen.lockOrientation('landscape').catch(function (error) {
+        console.log('Orientation lock failed: ', error);
+    });
+} else if (window.screen.mozLockOrientation) {
+    window.screen.mozLockOrientation('landscape').catch(function (error) {
+        console.log('Orientation lock failed: ', error);
+    });
+} else if (window.screen.msLockOrientation) {
+    window.screen.msLockOrientation('landscape').catch(function (error) {
+        console.log('Orientation lock failed: ', error);
+    });
 }
