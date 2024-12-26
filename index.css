@@ -128,15 +128,22 @@ label {
     padding: 20px;
     text-align: center;
 }
-@media screen and (orientation: portrait) {
-    body {
-        transform: rotate(90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: fixed; /* 修正: absoluteからfixedに変更 */
-        top: 0; /* 修正: topの値を100%から0に変更 */
-        left: 0; /* 修正: leftの値を0に設定 */
+
+.orientation-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10000;
+    text-align: center;
+}
+@media screen and (max-width: 500px) {
+    .orientation-popup {
+        display: block;
     }
 }
