@@ -128,3 +128,15 @@ label {
     padding: 20px;
     text-align: center;
 }
+@media screen and (orientation: portrait) {
+    body {
+        transform: rotate(90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: fixed; /* 修正: absoluteからfixedに変更 */
+        top: 0; /* 修正: topの値を100%から0に変更 */
+        left: 0; /* 修正: leftの値を0に設定 */
+    }
+}
