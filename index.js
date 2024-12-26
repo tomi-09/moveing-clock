@@ -69,11 +69,11 @@ document.getElementById('screenshot').addEventListener('click', () => {
         const img = document.getElementById('screenshot-image');
         img.src = dataUrl;
 
-        img.style.top = '30px';
+        img.style.top = '30%';
         img.style.right = '50%';
         img.style.border = '2px solid white';
         img.style.zIndex = '1000';
-        img.style.width = '400px';
+        img.style.width = '100%';
         img.style.height = 'auto'; // アスペクト比を維持
         img.style.boxShadow= '0 0 10px rgba(0, 0, 0, 0.5)';
         document.getElementById('settings').style.display = 'block';
@@ -178,6 +178,7 @@ function updateElapsedTime() {
     nowminutes = Math.floor((combinedElapsedTime % 3600) / 60);
     nowseconds = combinedElapsedTime % 60;
     document.getElementById('elapsed-time').innerText = `あなたは動く時計を${nowhours}時間${nowminutes}分${nowseconds}秒見ていました！`;
+    document.getElementById('elapsed-time').style.fontSize = '15px';
     // ローカルストレージに合算した経過時間を保存
     localStorage.setItem('elapsedTime', combinedElapsedTime);
 }
